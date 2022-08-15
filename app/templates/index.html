@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-
+	<div id="particles"></div>
+	<section class="main" id="main">
+		<div class="intro vcenter hcenter">
+			<h5>Welcome to</h5>
+			<h1 class="logo animate__animated animate__bounce">{{settings.logo}}</h1>
+			<h5>{{settings.tag}}</h5>
+		</div>
+	</section>
 {% endblock %}

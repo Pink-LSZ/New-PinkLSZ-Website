@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+	<section id="account">
+		<article id="userinfo">
+			<div class="pfp">
+				<img src="https://cdn.discordapp.com/avatars/{{account.discordId}}/{{account.avatar}}.png"> {{account.username}}
+			</div>
+		</article>
+		{% if not account.hf_uid or account.hf_uid == 'False' %}
+			<article class="hcenter noti" onclick="window.open('https://hackforums.net/api/v2/authorize?response_type=code&client_id={{hf.client}}&state={{name}}')">
+				<div class="container">
+					Please click here to link your HF profile!
+				</div>
+			</article>
+		{% else %}
+			<article class="hcenter noti">
+				<div class="container">
+					HackForums is <b class="green">verified!</b>
+				</div>
+			</article>
+		{% endif %}
+		<div class="container">
+			<article>
+				<header>
+					Settings
+				</header>
+				Coming Soon
+			</article>
+		</div>
+	</section>
+{% endblock %}

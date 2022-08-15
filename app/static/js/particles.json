@@ -1,0 +1,39 @@
+{
+  "particles": {
+    "number": {
+      "value": 100
+    },
+    "shape": {
+      "type": "circle"
+    },
+    "size": {
+      "value": 10,
+      "random": true
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "line_linked": {
+      "enable": false
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 2,
+        "opacity_min": 0.05,
+        "sync": false
+      }
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top",
+      "straight": false
+    }
+  },
+  "interactivity": {
+
+  }
+}

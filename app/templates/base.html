@@ -1,13 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title%}{% endblock %}</title>
-	<link rel="stylesheet" type="text/css" href="static/css/main.css">
-</head>
-<body>
-	{% block content %}
-	{% endblock %}
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../static/css/main.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+		<script src="https://kit.fontawesome.com/99b9819acd.js" crossorigin="anonymous"></script>
+		<title>{% block title %}{% endblock %}</title>
+	</head>
+	<body>
+		<nav class="mainnav">
+			<ul>
+				<li><strong class="navlogo">{{settings.logo}}</strong></li>
+			</ul>
+			<li>
+				<details role="list" dir="rtl">
+				<summary>Menu</summary>
+				<ul>
+					<li><a href="{{url_for('index')}}" class="secondary">Home</a></li>
+					{% if session.username %}
+						<li><a href="{{url_for('index')}}">Account</a></li>
+						<hr>
+						<li><a href="{{url_for('logout')}}" class="secondary">Logout</a></li>
+					{% else %}
+						<hr>
+						<li><a href="{{url_for('login')}}" class="secondary">Login</a></li>
+					{% endif %}
+				</ul>
+				</details>
+			</li>
+		</nav>
+		<div id="sidebar">
+			<aside>
+				<nav>
+					<ul class="hcenter">
+						<li class="navlogo"><strong>{{settings.logo}}</strong></li>
+					</ul>
+					<hr>
+					<ul>
+						<li><a href="{{url_for('index')}}" class="secondary"><i class="fa-regular fa-house"></i> Home</a></li>
+						<hr>
+					</ul>
+					{% if session.username %}
+						<ul>
+							<small>Account</small>
+							<li><a href="{{url_for('account')}}" class="secondary"><i class="fa-regular fa-gear"></i> Settings</a></li>
+							<li><a href="{{url_for('logout')}}" class="secondary"><i class="fa-regular fa-arrow-right-from-bracket fa-flip-horizontal"></i> Logout</a></li>
+						</ul>
+					{% else %}
+						<ul>
+							<li><a href="{{url_for('login')}}" class="secondary"><i class="fa-regular fa-arrow-right-to-bracket"></i> Login</a></li>
+						</ul>
+					{% endif %}
+				</nav>
+			</aside>
+		</div>
+		<div id="messages">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<dialog open id=flashes>
+				<article>
+					<ul aria-busy="true">
+						<small>Please wait. .</small>
+						{% for message in messages %}
+							<li>
+								{{ message }}
+							</li>
+						{% endfor %}
+					</ul>
+				</article>
+				</dialog>
+			{% endif %}
+		{% endwith %}
+	</div>
+	<main>
+		{% block content %}
+		{% endblock %}
+	</main>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<script type="text/javascript" src="../static/js/main.js"></script>
+	<script type="text/javascript" src="../static/js/scroll.js"></script>
+	<script type="text/javascript" src="../static/js/modal.js"></script>
 </body>
 </html>
