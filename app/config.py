@@ -1,10 +1,10 @@
 from app import app
-from dotenv import load_dotenv
 import os
+if os.getenv('ENVIRONMENT') == 'development':
+	from dotenv import load_dotenv
+	load_dotenv()
 
-load_dotenv()
-
-app.debug = os.getenv('DEBUG')
+app.debug = True
 app.config['ENVIRONMENT'] = os.getenv('ENVIRONMENT')
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['MYSQLHOST'] = os.getenv('MYSQLHOST')
