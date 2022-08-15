@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+	<section id="account">
+		<article id="userinfo">
+			<div class="pfp">
+				<img src="https://cdn.discordapp.com/avatars/{{account.discordId}}/{{account.avatar}}.png"> {{account.username}}
+			</div>
+		</article>
+		<div class="container">
+			<article>
+				<header>
+					Admin Settings
+				</header>
+				Nothing Yet
+			</article>
+			<article>
+				<header>
+					Members
+				</header>
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Username</th>
+							<th scope="col">HF UID</th>
+							<th scope="col">Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for member in members %}
+							<tr>
+								<th scope="row">{{member.id}}</th>
+								<td>{{member.username}}</td>
+								<td>{{member.hf_uid}}</td>
+								<td>
+									<div class="grid optionbuttons">
+										<button>Delete</button>
+										<button>Ban</button>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</article>
+		</div>
+	{% endblock %}

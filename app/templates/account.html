@@ -20,6 +20,20 @@
 				</div>
 			</article>
 		{% endif %}
+		{% if account.isadmin == 'True' %}
+			<article class="hcenter noti" onclick="parent.location='{{url_for('admin')}}'">
+				<div class="container">
+					Admin Settings
+				</div>
+			</article>
+		{% endif %}
+		{% if account.isdev == 'True' %}
+			<article class="hcenter noti" onclick="parent.location='{{url_for('developer')}}'">
+				<div class="container">
+					Developer Settings
+				</div>
+			</article>
+		{% endif %}
 		<div class="container accountsettings">
 			<article>
 				<header>

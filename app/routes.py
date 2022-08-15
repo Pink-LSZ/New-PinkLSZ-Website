@@ -1,6 +1,7 @@
 from flask import render_template, jsonify, request, redirect, session, flash, url_for
 from app import app
-from app.decorators import login_required
+from app.decorators import login_required, admin_required, dev_required
+from app.errors import page_not_found
 from app.hfapi import Get_Access_Token
 from app.discord import get_discord_access_token, get_discord_user
 
@@ -81,3 +82,18 @@ def deleteemail():
     app.db.DeleteEmail(session['username'])
     flash('Your email has been deleted successfully.')
     return redirect(url_for('account'))
+
+@app.route('/admin')
+@login_required
+@admin_required
+def admin():
+    account = app.db.GetAccount(session['username'])
+    members = app.db.GetAllMembers()
+    return render_template('admin/admin.html', account=account, members=members)
+
+@app.route('/developer')
+@login_required
+@dev_required
+def developer():
+    account = app.db.GetAccount(session['username'])
+    return render_template('admin/developer.html', account=account)

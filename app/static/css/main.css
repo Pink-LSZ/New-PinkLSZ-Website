@@ -2657,7 +2657,7 @@ aside nav small {
   margin: 0px;
 }
 #account article.noti {
-  margin: 0px;
+  margin: 0px !important;
   padding: 20px;
   color: var(--primary);
   margin-bottom: 20px;
@@ -2670,6 +2670,10 @@ aside nav small {
 }
 #account .accountsettings header {
   margin-bottom: 20px;
+}
+
+.optionbuttons button {
+  margin-bottom: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */
