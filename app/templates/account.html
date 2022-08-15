@@ -41,20 +41,27 @@
 						<small>We'll never share your email with anyone else.</small>
 					</div>
 					<div>
-						<button data-target="modal-example" onClick="toggleModal(event)">
+						<button data-target="model-delete-email" onClick="toggleModal(event)">
 						Delete Email
 						</button>
 					</div>
 				</div>
 				<hr>
+				<div class="container">
+					<p class="hcenter">This is for testing purposes only and it will be removed.</p>
+					<button data-target="model-delete-account" onClick="toggleModal(event)">
+						Delete Account
+					</button>
+				</div>
+				<hr>
 			</article>
 		</div>
-		<!-- Modal -->
-		<dialog id="modal-example">
+		<!-- Modal Delete Email -->
+		<dialog id="model-delete-email">
 		<article>
 			<a aria-label="Close"
 				class="close"
-				data-target="modal-example"
+				data-target="model-delete-email"
 				onClick="closeModal(visibleModal)">
 			</a>
 			<h3>Confirm your action!</h3>
@@ -67,15 +74,46 @@
 					<button
 					role="button"
 					class="secondary"
-					data-target="modal-example"
+					data-target="model-delete-email"
 					onClick="closeModal(visibleModal)">
 					Cancel
 					</button>
 					<button
 					role="button"
-					data-target="modal-example"
+					data-target="model-delete-email"
 					onclick="parent.location='{{url_for('deleteemail')}}'">
 					Delete my email
+					</button>
+				</div>
+			</footer>
+		</article>
+		</dialog>
+		<!-- Modal Delete Account -->
+		<dialog id="model-delete-account">
+		<article>
+			<a aria-label="Close"
+				class="close"
+				data-target="model-delete-account"
+				onClick="closeModal(visibleModal)">
+			</a>
+			<h3>Confirm your action!</h3>
+			<p>
+				This is permanent. Are you sure you want to remove your account?
+			</p>
+			<footer>
+				<div class="grid">
+					<button
+					role="button"
+					class="secondary"
+					data-target="model-delete-account"
+					onClick="closeModal(visibleModal)">
+					Cancel
+					</button>
+					<button
+					role="button"
+					data-target="model-delete-account"
+					onclick="parent.location='{{url_for('deleteacc')}}'">
+					Delete my account
 					</button>
 				</div>
 			</footer>

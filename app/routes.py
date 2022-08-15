@@ -83,6 +83,13 @@ def deleteemail():
     flash('Your email has been deleted successfully.')
     return redirect(url_for('account'))
 
+@app.route('/deleteacc')
+@login_required
+def deleteacc():
+    app.db.DeleteAccount(session['username'])
+    flash('Account has been deleted successfully.')
+    return redirect(url_for('logout'))
+
 @app.route('/admin')
 @login_required
 @admin_required

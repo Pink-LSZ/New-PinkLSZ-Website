@@ -63,3 +63,10 @@ class MySQL:
                 result = cursor.fetchall()
                 return result
             connection.commit()
+
+    def DeleteAccount(self, username):
+            connection = pymysql.connect(host=self.host, user=self.username, password=self.password, database=self.database, cursorclass=pymysql.cursors.DictCursor)
+            with connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(f'DELETE FROM users WHERE username="{username}"')
+                connection.commit()
