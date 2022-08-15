@@ -13,12 +13,6 @@
 					Please click here to link your HF profile!
 				</div>
 			</article>
-		{% else %}
-			<article class="hcenter noti">
-				<div class="container">
-					HackForums is <b class="green">verified!</b>
-				</div>
-			</article>
 		{% endif %}
 		{% if account.isadmin == 'True' %}
 			<article class="hcenter noti" onclick="parent.location='{{url_for('admin')}}'">
