@@ -1,8 +1,5 @@
 from app import app
 import os
-if os.getenv('ENVIRONMENT') == 'development':
-	from dotenv import load_dotenv
-	load_dotenv()
 
 app.debug = True
 app.config['ENVIRONMENT'] = os.getenv('ENVIRONMENT')
