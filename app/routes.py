@@ -14,6 +14,7 @@ def test():
 
 @app.route('/login')
 @app.route('/profile')
+@app.route('/profile/verifydiscord')
 def login():
     if 'code' in request.args:
         access_token = get_discord_access_token(app.config['DISCORDCLIENT'], app.config['DISCORDSECRET'], app.config['DISCORDREDIRECTURI'], request.args['code'])
