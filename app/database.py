@@ -47,3 +47,10 @@ class MySQL:
             with connection.cursor() as cursor:
                 cursor.execute(f'UPDATE users SET hfcode = "{code}", hfaccesstoken = "{access_token}", hf_uid = "{uid}"WHERE username="{username}"')
             connection.commit()
+
+    def DeleteEmail(self, username):
+        connection = pymysql.connect(host=self.host, user=self.username, password=self.password, database=self.database, cursorclass=pymysql.cursors.DictCursor)
+        with connection:
+            with connection.cursor() as cursor:
+                cursor.execute(f'UPDATE users SET email = "REMOVED" WHERE username="{username}"')
+            connection.commit()

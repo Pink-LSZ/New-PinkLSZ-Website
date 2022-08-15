@@ -2665,5 +2665,11 @@ aside nav small {
 #account article.noti:hover {
   color: var(--primary-hover);
 }
+#account .email {
+  align-items: center;
+}
+#account .accountsettings header {
+  margin-bottom: 20px;
+}
 
 /*# sourceMappingURL=main.css.map */

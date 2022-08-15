@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, request, redirect, session, flash, url_for
 from app import app
-from app.decorators import test_one
+from app.decorators import login_required
 from app.hfapi import Get_Access_Token
 from app.discord import get_discord_access_token, get_discord_user
 
@@ -54,6 +54,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/account')
+@login_required
 def account():
     account = app.db.GetAccount(session['username'])
     if account:
@@ -67,8 +68,16 @@ def account():
                 return render_template('account.html', account=account)
             else:
                 flash('Error with HF API! Please try later.')
+
         name = account['username'].replace('#', '-')
         return render_template('account.html', account=account, name=name)
     else:
         flash('Error with account')
         return redirect(url_for('index'))
+
+@app.route('/deleteemail')
+@login_required
+def deleteemail():
+    app.db.DeleteEmail(session['username'])
+    flash('Your email has been deleted successfully.')
+    return redirect(url_for('account'))
