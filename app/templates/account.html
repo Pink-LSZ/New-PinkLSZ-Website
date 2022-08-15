@@ -47,6 +47,7 @@
 					</div>
 				</div>
 				<hr>
+				{% if account.isdev == 'True' %}
 				<div class="container">
 					<p class="hcenter">This is for testing purposes only and it will be removed.</p>
 					<button data-target="model-delete-account" onClick="toggleModal(event)">
@@ -54,6 +55,7 @@
 					</button>
 				</div>
 				<hr>
+				{% endif %}
 			</article>
 		</div>
 		<!-- Modal Delete Email -->
