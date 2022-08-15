@@ -4,4 +4,4 @@ from app.decorators import test_one
 
 @app.route('/')
 def index():
-    return jsonify(app.config['DEBUG'])
+    return render_template('index.html')
