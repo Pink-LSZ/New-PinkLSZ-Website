@@ -19,7 +19,7 @@
 				<ul>
 					<li><a href="{{url_for('index')}}" class="secondary">Home</a></li>
 					{% if session.username %}
-						<li><a href="{{url_for('index')}}">Account</a></li>
+						<li><a href="{{url_for('account')}}">Account</a></li>
 						<hr>
 						<li><a href="{{url_for('logout')}}" class="secondary">Logout</a></li>
 					{% else %}
