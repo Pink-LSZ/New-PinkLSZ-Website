@@ -47,15 +47,6 @@
 					</div>
 				</div>
 				<hr>
-				{% if account.isdev == 'True' %}
-				<div class="container">
-					<p class="hcenter">This is for testing purposes only and it will be removed.</p>
-					<button data-target="model-delete-account" onClick="toggleModal(event)">
-						Delete Account
-					</button>
-				</div>
-				<hr>
-				{% endif %}
 			</article>
 		</div>
 		<!-- Modal Delete Email -->
@@ -90,36 +81,6 @@
 			</footer>
 		</article>
 		</dialog>
-		<!-- Modal Delete Account -->
-		<dialog id="model-delete-account">
-		<article>
-			<a aria-label="Close"
-				class="close"
-				data-target="model-delete-account"
-				onClick="closeModal(visibleModal)">
-			</a>
-			<h3>Confirm your action!</h3>
-			<p>
-				This is permanent. Are you sure you want to remove your account?
-			</p>
-			<footer>
-				<div class="grid">
-					<button
-					role="button"
-					class="secondary"
-					data-target="model-delete-account"
-					onClick="closeModal(visibleModal)">
-					Cancel
-					</button>
-					<button
-					role="button"
-					data-target="model-delete-account"
-					onclick="parent.location='{{url_for('deleteacc')}}'">
-					Delete my account
-					</button>
-				</div>
-			</footer>
-		</article>
-		</dialog>
+		
 	</section>
 {% endblock %}
