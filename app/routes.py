@@ -90,6 +90,19 @@ def deleteacc():
     flash('Account has been deleted successfully.')
     return redirect(url_for('logout'))
 
+@app.route('/admin/deleteuseracc')
+@login_required
+@admin_required
+def deleteuseracc():
+    if 'id' in request.args:
+        userid = request.args['id']
+        app.db.AdminDeleteAccount(userid)
+        flash(f'{userid} has been deleted')
+        return redirect(url_for('admin'))
+    else:
+        flash('Error deleting account.')
+        redirect(url_for('admin'))
+
 @app.route('/admin')
 @login_required
 @admin_required

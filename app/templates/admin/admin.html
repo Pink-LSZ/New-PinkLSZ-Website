@@ -18,6 +18,7 @@
 				<header>
 					Members
 				</header>
+				<p>Delete function works, ban does not yet.</p>
 				<table>
 					<thead>
 						<tr>
@@ -35,14 +36,46 @@
 								<td>{{member.hf_uid}}</td>
 								<td>
 									<div class="grid optionbuttons">
-										<button>Delete</button>
+										<button data-target="modal-user-{{member.id}}" onClick="toggleModal(event)">Delete</button>
 										<button>Ban</button>
 									</div>
 								</td>
 							</tr>
+							<!-- Modal Delete Account -->
+							<dialog id="modal-user-{{member.id}}">
+							<article>
+								<a aria-label="Close"
+									class="close"
+									data-target="modal-user-{{member.id}}"
+									onClick="closeModal(visibleModal)">
+								</a>
+								<h3>Confirm your action!</h3>
+								<p>
+									This is permanent. Are you sure you want to remove {{member.username}}?
+								</p>
+								<footer>
+									<div class="grid">
+										<button
+										role="button"
+										class="secondary"
+										data-target="modal-user-{{member.id}}"
+										onClick="closeModal(visibleModal)">
+										Cancel
+										</button>
+										<button
+										role="button"
+										data-target="modal-user-{{member.id}}"
+										onclick="parent.location='{{url_for('deleteuseracc')}}?id={{member.id}}'">
+										Delete user account
+										</button>
+									</div>
+								</footer>
+							</article>
+							</dialog>
 						{% endfor %}
 					</tbody>
 				</table>
 			</article>
 		</div>
-	{% endblock %}
+	</section>
+{% endblock %}

@@ -1,10 +1,51 @@
 {% extends "base.html" %}
 {% block title %}Developer{% endblock %}
 {% block content %}
-<section id="account">
-<article id="userinfo">
-	<div class="pfp">
-		<img src="https://cdn.discordapp.com/avatars/{{account.discordId}}/{{account.avatar}}.png"> {{account.username}}
-	</div>
-</article>
+	<section id="account">
+		<article id="userinfo">
+			<div class="pfp">
+				<img src="https://cdn.discordapp.com/avatars/{{account.discordId}}/{{account.avatar}}.png"> {{account.username}}
+			</div>
+		</article>
+		<article style="margin-top: 0px;">
+			<div class="container">
+				<p class="hcenter">This is for testing purposes only and it will be removed.</p>
+				<button data-target="model-delete-my-account" onClick="toggleModal(event)">
+				Delete Account
+				</button>
+			</div>
+			<hr>
+		</article>
+	</section>
+	<!-- Modal Delete Account -->
+	<dialog id="model-delete-my-account">
+	<article>
+		<a aria-label="Close"
+			class="close"
+			data-target="model-delete-my-account"
+			onClick="closeModal(visibleModal)">
+		</a>
+		<h3>Confirm your action!</h3>
+		<p>
+			This is permanent. Are you sure you want to remove your account?
+		</p>
+		<footer>
+			<div class="grid">
+				<button
+				role="button"
+				class="secondary"
+				data-target="model-delete-my-account"
+				onClick="closeModal(visibleModal)">
+				Cancel
+				</button>
+				<button
+				role="button"
+				data-target="model-delete-my-account"
+				onclick="parent.location='{{url_for('deleteacc')}}'">
+				Delete my account
+				</button>
+			</div>
+		</footer>
+	</article>
+	</dialog>
 {% endblock %}
