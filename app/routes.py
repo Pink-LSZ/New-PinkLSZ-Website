@@ -97,7 +97,7 @@ def deleteuseracc():
     if 'id' in request.args:
         userid = request.args['id']
         app.db.AdminDeleteAccount(userid)
-        flash(f'{userid} has been deleted')
+        flash('User has been deleted')
         return redirect(url_for('admin'))
     else:
         flash('Error deleting account.')
