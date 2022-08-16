@@ -2676,4 +2676,8 @@ aside nav small {
   margin-bottom: 5px;
 }
 
+#flashes ul {
+  padding-left: 0px;
+}
+
 /*# sourceMappingURL=main.css.map */
