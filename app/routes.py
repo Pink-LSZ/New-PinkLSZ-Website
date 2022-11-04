@@ -61,7 +61,7 @@ def account():
     if account:
         if 'state' in request.args:
             code = request.args['code']
-            access_token, uid = Get_Access_Token(app.config['HFCLIENT'], app.config['HFSECRET'], code, app.config['FIXIE_URL'])
+            access_token, uid = Get_Access_Token(app.config['HFCLIENT'], app.config['HFSECRET'], code)
             if access_token:
                 app.db.UpdateHF(account['username'], code, access_token, uid)
                 flash(f'HF UID: {uid} Linked')
