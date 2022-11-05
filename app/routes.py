@@ -1,4 +1,4 @@
-from flask import render_template, jsonify, request, redirect, session, flash, url_for
+from flask import render_template, jsonify, request, redirect, session, flash, url_for, send_from_directory
 from app import app
 from app.decorators import login_required, admin_required, dev_required
 from app.errors import page_not_found
@@ -9,9 +9,9 @@ from app.discord import get_discord_access_token, get_discord_user
 def index():
     return render_template('index.html')
 
-@app.route('/test')
-def test():
-    return jsonify(request.args)
+@app.route('/hf/images/<filename>')
+def servefile(filename):
+    return send_from_directory('../hf/images', filename)
 
 @app.route('/login')
 @app.route('/profile')
